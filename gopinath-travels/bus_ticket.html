@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Gopinath Travels</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Book your bus tickets online with Gopinath Travels. Find routes, compare fares, and travel safely.">
+<meta name="keywords" content="bus ticket booking, online bus reservation, Gopinath Travels, bus travel India, cheap bus tickets, book bus seat">
+<meta name="author" content="Gopinath Travels">
+<meta name="robots" content="index, follow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="./css/responsive.css">
+<style>
+	.cta {
+		background: unset !important;
+		top: 100px;
+	}
+	.cta_item {
+		padding: 25px !important;
+		background-color: rgb(233, 233, 233);
+		margin-bottom: 40px !important;
+	}
+	.search {
+		top: 179px;
+	}
+	.bus_title {
+		color: #1d1d1d;
+		display: -webkit-box;
+		font-size: .875rem;
+		font-weight: 700;
+		letter-spacing: -.08px;
+		line-height: 1.25rem;
+		margin: 0;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+		line-clamp: 1;
+		overflow: hidden;
+	}
+	.ticket_price {
+		color: #1d1d1d;
+		font-weight: 700;
+		margin: 0;
+	}
+	.cta_button {
+		margin-top: 20px !important;
+		text-align: end !important;
+	}
+	@media only screen and (max-width: 767px)
+	{
+		.search {
+			top: 0px !important;
+		}
+		.cta {
+			background: unset !important;
+			top: 0px !important;
+		}
+	}
+	.modal-dialog-slide-up {
+		transform: translateY(100%);
+		transition: transform 0.4s ease-out;
+	}
+	.modal.fade.show .modal-dialog-slide-up {
+		transform: translateY(0);
+	}
+	.seat {
+		width: 50px;
+		text-align: center;
+	}
+	.button_bcg {
+		pointer-events: none;
+	}
+	.seat {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+  }
+
+  .sleeper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .available { background-color: #e0ffe0; }
+  .booked { background-color: #ddd; cursor: not-allowed; }
+
+  .female { border: 2px solid hotpink !important; }
+
+  .sleeper-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .sleeper-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sleeper-space {
+    width: 40px;
+  }
+
+.vertical-timeline {
+  position: relative;
+  padding-left: 35px;
+  border-left: 2px solid #6c757d;
+}
+
+.stop {
+  position: relative;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.dot-icon {
+  position: absolute;
+  left: -18px;
+  top: 0;
+  font-size: 16px;
+}
+
+.stop-details {
+  padding-left: 10px;
+}
+
+.stop-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.stop-time {
+  font-size: 12px;
+  color: #555;
+}
+
+.line {
+  height: 20px;
+  border-left: 2px solid #6c757d;
+  margin-left: 2px;
+}
+fixed-footer {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 15px;
+  border-top: 1px solid #ccc;
+  z-index: 1000;
+}
+
+.seat {
+  cursor: pointer;
+}
+
+.seat.selected {
+  background-color: #ffc107 !important;
+}
+
+.h-100 {
+	height: 100px !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+
+		<!-- Top Bar -->
+
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col d-flex flex-row">
+						<div class="phone">+91 9692799655</div>
+						<div class="social">
+							<ul class="social_list">
+								<li class="social_list_item"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+								<li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li class="social_list_item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+						<!-- <div class="user_box ml-auto">
+							<div class="user_box_login user_box_link"><a href="#">login</a></div>
+							<div class="user_box_register user_box_link"><a href="#">register</a></div>
+						</div> -->
+					</div>
+				</div>
+			</div>		
+		</div>
+
+		<!-- Main Navigation -->
+
+		<nav class="main_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<div class="logo"><a href="#"><img src="" alt="">Gopinath Travels</a></div>
+						</div>
+						<div class="main_nav_container ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item"><a href="#">home</a></li>
+								<li class="main_nav_item"><a href="about.html">about us</a></li>
+								<li class="main_nav_item"><a href="offers.html">offers</a></li>
+								<li class="main_nav_item"><a href="blog.html">news</a></li>
+								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+							</ul>
+						</div>
+
+						<div class="hamburger">
+							<i class="fa fa-bars trans_200"></i>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</nav>
+
+	</header>
+
+	<div class="menu trans_500">
+		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+			<div class="menu_close_container"><div class="menu_close"></div></div>
+			<div class="logo menu_logo"><a href="#"><img src="" alt=""></a></div>
+			<ul>
+				<li class="menu_item"><a href="#">home</a></li>
+				<li class="menu_item"><a href="about.html">about us</a></li>
+				<li class="menu_item"><a href="offers.html">offers</a></li>
+				<li class="menu_item"><a href="blog.html">news</a></li>
+				<li class="menu_item"><a href="contact.html">contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Search -->
+	<div class="search">
+		
+
+		<!-- Search Contents -->
+		
+		<div class="container fill_height">
+			<div class="row fill_height">
+				<div class="col fill_height">
+					<div class="search_panel active">
+						<form action="#" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+							<div class="search_item">
+								<div>Source</div>
+								<select name="source" id="source_1" class="dropdown_item_select search_input">
+									<option disabled selected>Select</option>
+									<option>Bhubaneswar</option>
+									<option>Bangalore</option>
+								</select>
+							</div>
+							<div class="search_item">
+								<div>Destination</div>
+								<select name="destination" id="destination_1" class="dropdown_item_select search_input">
+									<option disabled selected>Select	</option>
+									<option>Bhubaneswar</option>
+									<option>Bangalore</option>
+								</select>
+							</div>
+							<div class="search_item">
+								<div>date</div>
+								<input type="date" class="check_in search_input" placeholder="YYYY-MM-DD">
+							</div>
+							<div class="search_item">
+								<div>women</div>
+								<select name="adults" id="adults_1" class="dropdown_item_select search_input">
+									<option>No</option>
+									<option>Yes</option>
+								</select>
+							</div>
+							<button class="button search_button">Search Buses<span></span><span></span><span></span></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<!-- CTA -->
+
+	<div class="cta">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="cta_slider_container">
+						<div class="owl-carousel owl-theme cta_slider">
+							<div class="owl-item cta_item text-center">
+								<div class="row">
+									<div class="col-md-4" style="text-align: left;">
+										<div class="bus_title">Gopinath Travels</div>
+										<div>Bharat Benz A/C Sleeper (2+1)</div>
+									</div>
+									<div class="col-md-4">
+										<div class="bus_title">21:45 - 07:00</div>
+										<div>9h 15m 7 Seats (2 Single)</div>
+									</div>
+									<div class="col-md-4" style="text-align: end;">
+										<div class="ticket_price">₹1,300</div>
+										<div>onwards</div>
+									</div>
+								</div>
+								<div class="row" style="justify-content: end;">
+									<div class="button cta_button"><div class="button_bcg"></div><a href="#" class="bg-button-second" data-toggle="modal" data-target="#seatModal">View Seats<span></span><span></span><span></span></a></div>
+								</div>
+							</div>
+							<div class="owl-item cta_item text-center">
+								<div class="row">
+									<div class="col-md-4" style="text-align: left;">
+										<div class="bus_title">Gopinath Travels</div>
+										<div>Bharat Benz A/C Sleeper (2+1)</div>
+									</div>
+									<div class="col-md-4">
+										<div class="bus_title">21:45 - 07:00</div>
+										<div>9h 15m 7 Seats (2 Single)</div>
+									</div>
+									<div class="col-md-4" style="text-align: end;">
+										<div class="ticket_price">₹1,300</div>
+										<div>onwards</div>
+									</div>
+								</div>
+								<div class="row" style="justify-content: end;">
+									<div class="button cta_button"><div class="button_bcg"></div><a href="#" class="bg-button-second" data-toggle="modal" data-target="#seatModal">View Seats<span></span><span></span><span></span></a></div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+					
+	</div>
+
+	<!-- Modal for Seat Booking -->
+
+	<div class="modal fade" id="seatModal" tabindex="-1">
+		<div class="modal-dialog modal-dialog-scrollable modal-fullscreen modal-xl modal-dialog-slide-up">
+		  <div class="modal-content rounded-top">
+			<div class="modal-header">
+				<button class="btn btn-secondary" id="backBtn" style="display: none; font-size: 0.6rem !important; margin-right: 10px;" onclick="goBack()">Go Back</button>
+				<button onclick="goToForm()" class="btn btn-secondary d-none">Back to Form</button>
+				<h4 class="modal-title"> <b>Bhubaneswar <i class="fa fa-arrow-right" aria-hidden="true"></i> Bangalore</b></h4>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span style="color: #fff;">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  <!-- 💺 Add your seat layout here -->
+			 <div class="row" id="seatLayoutView">
+				<div class="col-lg-6">
+					<div class="container text-center">
+
+						<!-- 🔻 LEGEND -->
+						<div class="mb-3">
+							<span class="seat available"></span> Available
+							<span class="seat booked"></span> Booked
+							<span class="seat selected"></span> Selected
+							<span class="seat available female" style="border: 2px solid hotpink;"></span> Ladies Seat
+						</div>
+					  
+						<!-- 🟩 LOWER BERTH -->
+						<h5>Lower Berth</h5>
+						<div class="sleeper-row">
+						  <div class="sleeper-group">
+							<div class="seat sleeper available" data-price="1300" title="Seat L1 - ₹1300">L1<br><small>₹1300</small></div>
+							<div class="seat sleeper booked">L2</div>
+						  </div>
+						  <div class="sleeper-space"></div>
+						  <div class="sleeper-group">
+							<div class="seat sleeper available" data-price="1300" title="Seat L3 - ₹1300">L3<br><small>₹1300</small></div>
+							<div class="seat sleeper available female" data-price="1300" title="Seat L4 (Female) - ₹1300">L4<br><small>₹1300</small></div>
+						  </div>
+						</div>
+						
+						<div class="sleeper-row">
+						  <div class="sleeper-group">
+							<div class="seat sleeper available" data-price="1300" title="Seat L5 - ₹1300">L5<br><small>₹1300</small></div>
+							<div class="seat sleeper available" data-price="1300" title="Seat L6 - ₹1300">L6<br><small>₹1300</small></div>
+						  </div>
+						  <div class="sleeper-space"></div>
+						  <div class="sleeper-group">
+							<div class="seat sleeper booked">L7</div>
+							<div class="seat sleeper booked">L8</div>
+						  </div>
+						</div>
+						
+						<!-- UPPER BERTH -->
+						<h5 class="mt-4">Upper Berth</h5>
+						<div class="sleeper-row">
+						  <div class="sleeper-group">
+							<div class="seat sleeper available h-100" data-price="1000" title="Seat U1 - ₹1000">U1<br><small>₹1000</small></div>
+							<div class="seat sleeper booked h-100">U2</div>
+						  </div>
+						  <div class="sleeper-space"></div>
+						  <div class="sleeper-group">
+							<div class="seat sleeper available h-100 female" data-price="1000" title="Seat U3 (Female) - ₹1000">U3<br><small>₹1000</small></div>
+						  </div>
+						</div>
+						
+						<div class="sleeper-row">
+						  <div class="sleeper-group">
+							<div class="seat sleeper available h-100" data-price="1000" title="Seat U4 - ₹1000">U4<br><small>₹1000</small></div>
+							<div class="seat sleeper available h-100" data-price="1000" title="Seat U5 - ₹1000">U5<br><small>₹1000</small></div>
+						  </div>
+						  <div class="sleeper-space"></div>
+						  <div class="sleeper-group">
+							<div class="seat sleeper booked h-100">U6</div>
+						  </div>
+						</div>
+					  
+					  </div>
+				</div>
+				<div class="col-lg-6 text-start">
+					<h4><b>Gopinath Travels</b></h4>
+					<div>18:45 - 05:20 · Wed 18 Jun</div>
+					<div>LAHARI A/C SLEEPER CUM SEATER</div>
+					<hr>
+					<h4><b>Bus Route</b></h4>
+					<div>9hr 30min</div>
+					<!-- Timeline Container -->
+					<div class="container my-4">
+						<div class="vertical-timeline">
+					
+						<!-- START STOP -->
+						<div class="stop fade-in">
+							<div class="dot-icon">
+							<i class="fa fa-map-marker text-success"></i>
+							</div>
+							<div class="stop-details">
+							<div class="stop-name">Chennai</div>
+							<div class="stop-time">21:45</div>
+							</div>
+						</div>
+					
+						<!-- MID STOP -->
+						<div class="line"></div>
+						<div class="stop fade-in">
+							<div class="dot-icon">
+							<i class="fa fa-bus text-primary"></i>
+							</div>
+							<div class="stop-details">
+							<div class="stop-name">Vellore</div>
+							<div class="stop-time">23:00</div>
+							</div>
+						</div>
+					
+						<!-- MID STOP -->
+						<div class="line"></div>
+						<div class="stop fade-in">
+							<div class="dot-icon">
+							<i class="fa fa-bus text-primary"></i>
+							</div>
+							<div class="stop-details">
+							<div class="stop-name">Bangalore</div>
+							<div class="stop-time">03:00</div>
+							</div>
+						</div>
+
+						<div class="line"></div>
+						<div class="stop fade-in">
+							<div class="dot-icon">
+							<i class="fa fa-bus text-primary"></i>
+							</div>
+							<div class="stop-details">
+							<div class="stop-name">Bangalore</div>
+							<div class="stop-time">03:00</div>
+							</div>
+						</div>
+
+						<div class="line"></div>
+						<div class="stop fade-in">
+							<div class="dot-icon">
+							<i class="fa fa-bus text-primary"></i>
+							</div>
+							<div class="stop-details">
+							<div class="stop-name">Bangalore</div>
+							<div class="stop-time">03:00</div>
+							</div>
+						</div>
+					
+						<!-- END STOP -->
+						<div class="line"></div>
+						<div class="stop fade-in">
+						<div class="dot-icon">
+						<i class="fa fa-flag-checkered text-danger"></i>
+						</div>
+						<div class="stop-details">
+						<div class="stop-name">Mysore</div>
+						<div class="stop-time">07:00</div>
+						</div>
+					</div>
+				
+					</div>
+				</div>
+  
+				</div>
+			 </div>
+			 <div id="passengerForm" class="d-none">
+				<h5 class="mb-2"><b>Contact Details</b></h5>
+				<form>
+				  <div class="form-group">
+					<input type="email" class="form-control" id="name" placeholder="Email ID" required>
+				  </div>
+				  <div class="form-group">
+					<input type="number" class="form-control" id="age" placeholder="Phone" required>
+				  </div>
+				  <div class="form-group">
+					<input type="text" class="form-control" id="state" placeholder="State" required>
+				  </div>
+				</form>
+				<hr>
+				<h5 class="mb-2"><b>Passenger Details</b></h5 class="mb-2">
+				<form  id="passengerDetailsForm">
+				  <div class="form-group">
+					<input type="text" class="form-control" id="name" placeholder="Enter name" required>
+				  </div>
+				  <div class="form-group">
+					<input type="number" class="form-control" id="age" placeholder="Enter age" required>
+				  </div>
+				  <div class="form-group">
+					<select class="form-control" id="gender" required>
+					<option disabled selected>Gender</option>
+					  <option>Male</option>
+					  <option>Female</option>
+					  <option>Other</option>
+					</select>
+				  </div>
+				</form>
+			  </div>
+			  <div id="bookingLoader" class="text-center my-4 d-none">
+				<div class="spinner-border text-primary" role="status">
+				  <span class="visually-hidden"></span>
+				</div>
+				<p class="mt-2"><strong>Booking your seat, please wait...</strong></p>
+			  </div>
+			  
+			  <!-- Payment Method UI (Hidden initially) -->
+			  <div id="paymentOptions" class="d-none">
+				<h5 class="mt-4"><b>Select Payment Method</b></h5>
+				<div class="list-group">
+				  <button class="list-group-item list-group-item-action"><i class="fa fa-credit-card me-2"></i> Credit/Debit Card</button>
+				  <button class="list-group-item list-group-item-action"><i class="fa fa-university me-2"></i> Net Banking</button>
+				  <button class="list-group-item list-group-item-action"><i class="fa fa-google me-2"></i> Google Pay</button>
+				  <button class="list-group-item list-group-item-action"><i class="fa fa-phone me-2"></i> PhonePe</button>
+				</div>
+			  </div>
+
+			  <div id="bookingSuccess" class="alert alert-success text-center d-none mt-4">
+				✅ Your seats have been successfully booked! Enjoy your journey. 🚌
+			  </div>
+			</div>
+			<div class="modal-footer fixed-footer d-none justify-content-between align-items-center">
+				<div><strong>Total: ₹<span id="totalPrice">0</span> (<span id="seatCount">0</span> seat)</strong></div>
+				<div class="row" style="justify-content: end;">
+					<!-- Button 1: Continue to Passenger Form -->
+					<div class="button cta_button" id="continueBtnBox">
+						<div class="button_bcg"></div>
+						<a href="#" class="bg-button-second" id="continueBtn" onclick="continueToForm()">
+						Fill Passenger Details<span></span><span></span><span></span>
+						</a>
+					</div>
+					
+					<!-- Button 2: Go to Payment (Shown after filling passenger form) -->
+					<div class="button cta_button d-none" id="goToPaymentBox">
+						<div class="button_bcg"></div>
+						<a href="#" class="bg-button-second" onclick="goToPayment()">
+						Go to Payment<span></span><span></span><span></span>
+						</a>
+					</div>
+					
+					<!-- Button 3: Book Seats (Shown on payment screen only) -->
+					<div class="button cta_button d-none" id="bookSeatBox">
+						<div class="button_bcg"></div>
+						<a href="#" class="bg-button-second" onclick="submitBooking()">
+						Book Seats<span></span><span></span><span></span>
+						</a>
+					</div>
+				  </div>
+				</div>
+			  </div>
+		  </div>
+		</div>
+	  </div>
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+
+				<!-- Footer Column -->
+				<div class="col-lg-6 footer_column">
+					<div class="footer_col">
+						<div class="footer_content footer_about">
+							<div class="logo_container footer_logo">
+								<div class="logo"><a href="#"><img src="" alt="">gopinath travels</a></div>
+							</div>
+							<p class="footer_about_text">Gopinath Travels is a trusted bus booking service connecting cities across India.
+								We focus on safety, comfort, and on-time travel for all passengers.
+								Our user-friendly platform makes booking tickets fast and hassle-free.
+								With a growing network and modern buses, we serve thousands daily.
+								We’re committed to delivering a smooth, reliable, and affordable travel experience.
+								Join us and travel smarter with Gopinath Travels.</p>
+							<ul class="footer_social_list">
+								<li class="footer_social_item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fa fa-behance"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Footer Column -->
+				<div class="col-lg-3 footer_column">
+					<div class="footer_col">
+						<div class="footer_title">tags</div>
+						<div class="footer_content footer_tags">
+							<ul class="tags_list clearfix">
+								<li class="tag_item"><a href="#">design</a></li>
+								<li class="tag_item"><a href="#">fashion</a></li>
+								<li class="tag_item"><a href="#">music</a></li>
+								<li class="tag_item"><a href="#">video</a></li>
+								<li class="tag_item"><a href="#">party</a></li>
+								<li class="tag_item"><a href="#">photography</a></li>
+								<li class="tag_item"><a href="#">adventure</a></li>
+								<li class="tag_item"><a href="#">travel</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Footer Column -->
+				<div class="col-lg-3 footer_column">
+					<div class="footer_col">
+						<div class="footer_title">contact info</div>
+						<div class="footer_content footer_contact">
+							<ul class="contact_info_list">
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="img/placeholder.svg" alt=""></div></div>
+									<div class="contact_info_text">Sriram Nagar.Khandapada Road</div>
+								</li>
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="img/phone-call.svg" alt=""></div></div>
+									<div class="contact_info_text">+91 9692799655</div>
+								</li>
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="img/message.svg" alt=""></div></div>
+									<div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">gopinathtravels2025@gmail.com</a></div>
+								</li>
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="img/planet-earth.svg" alt=""></div></div>
+									<div class="contact_info_text"><a href="https://colorlib.com">www.gopinathtravels.in</a></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+	<!-- Copyright -->
+
+	<div class="copyright">
+		<div class="container">
+			<div class="row" style="justify-content: center;">
+				<div class="col-lg-3 order-lg-1 order-2  ">
+					<div class="copyright_content d-flex flex-row align-items-center">
+						<div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by SARIT
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script>
+
+let selectedSeats = [];
+
+document.querySelectorAll('.seat.available').forEach(seat => {
+  seat.addEventListener('click', function () {
+    const seatNumber = this.textContent.trim().split("\n")[0]; // get 'L1', 'U3' etc.
+    const price = parseInt(this.getAttribute("data-price"));
+
+    this.classList.toggle("selected");
+
+    const index = selectedSeats.findIndex(s => s.seat === seatNumber);
+
+    if (index > -1) {
+      selectedSeats.splice(index, 1); // remove
+    } else {
+      selectedSeats.push({ seat: seatNumber, price: price });
+    }
+
+    // Update footer
+    const total = selectedSeats.reduce((sum, s) => sum + s.price, 0);
+    const count = selectedSeats.length;
+
+    document.getElementById("totalPrice").innerText = total;
+    document.getElementById("seatCount").innerText = count + (count === 1 ? " seat" : " seats");
+
+    const footer = document.querySelector(".fixed-footer");
+    footer.classList.toggle("d-none", count === 0);
+  });
+});
+
+function continueToForm() {
+  document.getElementById("seatLayoutView").classList.add("d-none");
+  document.getElementById("passengerForm").classList.remove("d-none");
+  document.getElementById("backBtn").style.display = "inline-block";
+
+  document.getElementById("continueBtnBox").classList.add("d-none");
+  document.getElementById("goToPaymentBox").classList.remove("d-none");
+}
+
+function goBack() {
+  document.getElementById("seatLayoutView").classList.remove("d-none");
+  document.getElementById("passengerForm").classList.add("d-none");
+  document.getElementById("paymentOptions").classList.add("d-none");
+  document.getElementById("bookingLoader").classList.add("d-none");
+
+  document.getElementById("backBtn").style.display = "none";
+
+  document.getElementById("continueBtnBox").classList.remove("d-none");
+  document.getElementById("goToPaymentBox").classList.add("d-none");
+  document.getElementById("bookSeatBox").classList.add("d-none");
+}
+function goToForm() {
+  document.getElementById("paymentOptions").classList.add("d-none");
+  document.getElementById("passengerForm").classList.remove("d-none");
+}
+function goToPayment() {
+  // Hide form
+  document.getElementById("passengerForm").classList.add("d-none");
+
+  // Show loader
+  document.getElementById("bookingLoader").classList.remove("d-none");
+
+  // After loading, show payment, hide loader and previous buttons
+  setTimeout(() => {
+    document.getElementById("bookingLoader").classList.add("d-none");
+    document.getElementById("paymentOptions").classList.remove("d-none");
+
+    // ✅ Correct IDs
+    document.getElementById("goToPaymentBox").classList.add("d-none");
+    document.getElementById("bookSeatBox").classList.remove("d-none");
+  }, 4000);
+}
+function submitBooking() {
+  // Hide payment section and footer buttons
+  document.getElementById("paymentOptions").classList.add("d-none");
+  document.querySelector(".fixed-footer").classList.add("d-none");
+
+  // Show success message
+  document.getElementById("bookingSuccess").classList.remove("d-none");
+
+  // Optionally reset everything after a few seconds
+  setTimeout(() => {
+    // Hide the modal, reset forms, clear selections etc.
+    document.getElementById("bookingSuccess").classList.add("d-none");
+    // alert("Redirecting to home or reset page...");
+    location.reload(); // or you can redirect to home page
+  }, 4000);
+}
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/script.js"></script>
+
+</body>
+
+</html>
